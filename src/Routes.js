@@ -4,15 +4,18 @@ import Signup from './pages/SignUp/Signup';
 import Signin from './pages/SignIn/Signin';
 import Home from './pages/Home/Home';
 import Menu from './components/Menu/Menu';
+import UserDashboard from './pages/UserDashboard/UserDashboard';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 
 const Routes = () => {
   return (
     <BrowserRouter>
       <Menu />
       <Switch>
-        <Route path="/signin" exact component={Signin} />
-        <Route path="/signup" exact component={Signup} />
+        <Route path="/signin" component={Signin} />
+        <Route path="/signup" component={Signup} />
         <Route path="/" exact component={Home} />
+        <PrivateRoute path="/dashboard" component={UserDashboard} />
       </Switch>
     </BrowserRouter>
   );

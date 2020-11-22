@@ -24,7 +24,7 @@ const Menu = ({ history }) => {
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item">
             <NavLink
               className="nav-link link"
               activeClassName="selected"
@@ -34,13 +34,14 @@ const Menu = ({ history }) => {
               Home
             </NavLink>
           </li>
-          <li class="nav-item active">
+
+          <li class="nav-item">
             <NavLink
               className="nav-link link"
               activeClassName="selected"
-              to="/products"
+              to="/dashboard"
             >
-              Products
+              Dashboard
             </NavLink>
           </li>
 
