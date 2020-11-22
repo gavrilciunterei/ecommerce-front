@@ -6,58 +6,105 @@ import { isAuthenticated } from '../../hoc/Authentication';
 
 const Menu = ({ history }) => {
   return (
-    <div>
-      <ul className="nav nav-tabs bg-primary">
-        <li className="nav-item">
-          <NavLink
-            exact
-            className="nav-link link"
-            activeClassName="selected"
-            to="/"
-          >
-            Home
-          </NavLink>
-        </li>
-        {!isAuthenticated() && (
-          <>
-            <li className="nav-item">
-              <NavLink
-                className="nav-link link"
-                activeClassName="selected"
-                to="/signin"
-              >
-                Signin
-              </NavLink>
-            </li>
-            <div>
-              <li className="nav-item">
-                <NavLink
-                  className="nav-link link"
-                  activeClassName="selected"
-                  to="/signup"
-                >
-                  Signup
-                </NavLink>
-              </li>
-            </div>
-          </>
-        )}
-        {isAuthenticated && (
-          <li className="nav-item">
-            <span
-              className="nav-link link link-span"
-              onClick={() =>
-                signout(() => {
-                  history.push('/');
-                })
-              }
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <NavLink class="navbar-brand" to="/">
+        Navbar
+      </NavLink>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <NavLink
+              className="nav-link link"
+              activeClassName="selected"
+              exact
+              to="/"
             >
-              Signout
-            </span>
+              Home
+            </NavLink>
           </li>
-        )}
-      </ul>
-    </div>
+          <li class="nav-item active">
+            <NavLink
+              className="nav-link link"
+              activeClassName="selected"
+              to="/products"
+            >
+              Products
+            </NavLink>
+          </li>
+
+          <form class="form-inline my-2 my-lg-0">
+            <input
+              class="form-control mr-sm-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+            />
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+              Search
+            </button>
+          </form>
+        </ul>
+        <ul class="navbar-nav">
+          <div class="dropdown">
+            <span
+              class="nav-link link dropdown-toggle"
+              id="navbarDropdown"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              Account Login
+            </span>
+            <div class="dropdown-menu">
+              <h6 class="dropdown-header">User name</h6>
+              {!isAuthenticated() && (
+                <>
+                  <NavLink
+                    className="nav-link link"
+                    activeClassName="selected"
+                    to="/signin"
+                  >
+                    Signin
+                  </NavLink>
+
+                  <NavLink
+                    className="nav-link link"
+                    activeClassName="selected"
+                    to="/signup"
+                  >
+                    Signup
+                  </NavLink>
+                </>
+              )}
+              {isAuthenticated() && (
+                <span
+                  className="nav-link link link-span"
+                  onClick={() =>
+                    signout(() => {
+                      history.push('/');
+                    })
+                  }
+                >
+                  Signout
+                </span>
+              )}
+            </div>
+          </div>
+        </ul>
+      </div>
+    </nav>
   );
 };
 

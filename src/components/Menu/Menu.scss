@@ -1,11 +1,17 @@
 .link {
-  color: #000;
+  color: #fff !important;
+  padding-right: 30px !important;
 
   &.selected {
-    color: #fff;
+    color: #00c72e !important;
   }
 }
 
 .link-span {
   cursor: pointer;
+}
+
+.dropdown-menu {
+  padding: 10px;
+  background-color: #212529;
 }
