@@ -8,7 +8,7 @@ const Menu = ({ history }) => {
   return (
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <NavLink class="navbar-brand" to="/">
-        Navbar
+        ECommerce
       </NavLink>
       <button
         class="navbar-toggler"
@@ -26,8 +26,8 @@ const Menu = ({ history }) => {
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
             <NavLink
-              className="nav-link link"
-              activeClassName="selected"
+              className="nav-link text-white"
+              activeClassName="text-primary"
               exact
               to="/"
             >
@@ -37,9 +37,9 @@ const Menu = ({ history }) => {
 
           <li class="nav-item">
             <NavLink
-              className="nav-link link"
-              activeClassName="selected"
-              to="/dashboard"
+              className="nav-link text-white"
+              activeClassName="text-primary"
+              to="/user/dashboard"
             >
               Dashboard
             </NavLink>
@@ -52,7 +52,7 @@ const Menu = ({ history }) => {
               placeholder="Search"
               aria-label="Search"
             />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">
               Search
             </button>
           </form>
@@ -60,7 +60,7 @@ const Menu = ({ history }) => {
         <ul class="navbar-nav">
           <div class="dropdown">
             <span
-              class="nav-link link dropdown-toggle"
+              class="nav-link link dropdown-toggle mr-3 text-white"
               id="navbarDropdown"
               data-toggle="dropdown"
               aria-haspopup="true"
@@ -69,20 +69,20 @@ const Menu = ({ history }) => {
               Account Login
             </span>
             <div class="dropdown-menu">
-              <h6 class="dropdown-header">User name</h6>
+              <h6 class="dropdown-header">Hello</h6>
               {!isAuthenticated() && (
                 <>
                   <NavLink
-                    className="nav-link link"
-                    activeClassName="selected"
+                    className="nav-link text-white"
+                    activeClassName="text-primary"
                     to="/signin"
                   >
                     Signin
                   </NavLink>
 
                   <NavLink
-                    className="nav-link link"
-                    activeClassName="selected"
+                    className="nav-link text-white"
+                    activeClassName="text-primary"
                     to="/signup"
                   >
                     Signup
@@ -91,7 +91,7 @@ const Menu = ({ history }) => {
               )}
               {isAuthenticated() && (
                 <span
-                  className="nav-link link link-span"
+                  className="nav-link link-span text-white"
                   onClick={() =>
                     signout(() => {
                       history.push('/');

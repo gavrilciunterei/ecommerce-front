@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Layout from '../../components/Layout/Layout';
 import { signin } from '../../hoc/Signin';
-import { authenticate } from '../../hoc/Authentication';
+import { authenticate, isAuthenticated } from '../../hoc/Authentication';
 
 export default function Signup() {
   const [values, setValues] = useState({
@@ -14,6 +14,7 @@ export default function Signup() {
   });
 
   const { email, password, loading, error, redirectToReferrer } = values;
+  const { user } = isAuthenticated();
 
   const handleChange = (e) => {
     setValues({
@@ -87,7 +88,11 @@ export default function Signup() {
 
   const redirectUser = () => {
     if (redirectToReferrer) {
-      return <Redirect to="/" />;
+      if (user && user.role === 1) {
+        return <Redirect to="/admin/dashboard" />;
+      } else {
+        return <Redirect to="user/dashboard" />;
+      }
     }
   };
 
