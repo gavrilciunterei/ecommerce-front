@@ -35,15 +35,27 @@ const Menu = ({ history }) => {
             </NavLink>
           </li>
 
-          <li class="nav-item">
-            <NavLink
-              className="nav-link text-white"
-              activeClassName="text-primary"
-              to="/user/dashboard"
-            >
-              Dashboard
-            </NavLink>
-          </li>
+          {isAuthenticated() && isAuthenticated().user.role === 1 ? (
+            <li class="nav-item">
+              <NavLink
+                className="nav-link text-white"
+                activeClassName="text-primary"
+                to="/admin/dashboard"
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          ) : (
+            <li class="nav-item">
+              <NavLink
+                className="nav-link text-white"
+                activeClassName="text-primary"
+                to="/user/dashboard"
+              >
+                Dashboard
+              </NavLink>
+            </li>
+          )}
 
           <form class="form-inline my-2 my-lg-0">
             <input

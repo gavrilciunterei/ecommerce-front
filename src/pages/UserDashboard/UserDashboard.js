@@ -1,57 +1,9 @@
 import React from 'react';
 import Layout from '../../components/Layout/Layout';
-import { isAuthenticated } from '../../hoc/Authentication';
-import { Link } from 'react-router-dom';
+import Card from '../../components/Card/Card';
+import { userLinks, name, userInfo, purchaseHisoty } from './Data';
 
 const UserDashboard = () => {
-  const {
-    user: { _id, name, email, role },
-  } = isAuthenticated();
-
-  const userLinks = () => {
-    return (
-      <div className="card">
-        <h4 className="card-header">User Links</h4>
-        <ul className="list-group">
-          <li className="list-group-item">
-            <Link className="nav-link" to="/cart">
-              My cart
-            </Link>
-            <Link className="nav-link" to="/profile/update">
-              Update profile
-            </Link>
-          </li>
-        </ul>
-      </div>
-    );
-  };
-
-  const userInfo = () => {
-    return (
-      <div className="card mb-5">
-        <h3 className="card-header">User Information</h3>
-        <ul className="list-group">
-          <li className="list-group-item">Name: {name}</li>
-          <li className="list-group-item">Email: {email}</li>
-          <li className="list-group-item">
-            Role: {role === 1 ? 'Admin' : 'Normal user'}
-          </li>
-        </ul>
-      </div>
-    );
-  };
-
-  const purchaseHisoty = () => {
-    return (
-      <div className="card mb-5">
-        <h3 className="card-header">Purchase history</h3>
-        <ul className="list-group">
-          <li className="list-group-item">History</li>
-        </ul>
-      </div>
-    );
-  };
-
   return (
     <div>
       <Layout
@@ -60,10 +12,20 @@ const UserDashboard = () => {
         className="container"
       >
         <div className="row">
-          <div className="col-3">{userLinks()}</div>
+          <div className="col-3">
+            <Card headerName="User Links" itemsLink={userLinks} />
+          </div>
           <div className="col-9">
-            {userInfo()}
-            {purchaseHisoty()}
+            <Card
+              headerName="User Information"
+              spacing="mb-5"
+              itemsList={userInfo}
+            />
+            <Card
+              headerName="History Information"
+              spacing="mb-5"
+              itemsList={purchaseHisoty}
+            />
           </div>
         </div>
       </Layout>
